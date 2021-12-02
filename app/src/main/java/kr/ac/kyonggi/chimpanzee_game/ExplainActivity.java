@@ -32,7 +32,7 @@ public class ExplainActivity extends AppCompatActivity {
 
                 return true;
             case R.id.toStart:
-                Intent intent3 = new Intent(getApplicationContext(),GameActivity.class);
+                Intent intent3 = new Intent(getApplicationContext(), ModeActivity.class);
                 startActivity(intent3);
                 return true;
 

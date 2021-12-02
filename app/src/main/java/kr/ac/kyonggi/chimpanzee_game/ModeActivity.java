@@ -1,7 +1,5 @@
 package kr.ac.kyonggi.chimpanzee_game;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,32 +8,48 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+
+public class ModeActivity extends AppCompatActivity {
+
+    static String mode = "";
+
+    Button monkeyButton = (Button) findViewById(R.id.monkeyMode);
+    Button gorillaButton = (Button) findViewById(R.id.gorillaMode);
+    Button chimpanzeeButton = (Button) findViewById(R.id.chimpanzeeMode);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_mode);
 
-
-        Button startButton = (Button) findViewById(R.id.startButton);
-        Button exButton = (Button) findViewById(R.id.button2);
-        startButton.setOnClickListener(new View.OnClickListener() {
+        monkeyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ModeActivity.class);
+                mode="monkey";
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class); // 클래스 새로 만들어서 변경할 것
+                startActivity(intent);
+            }
+        });
+        gorillaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mode="gorilla";
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class); // 클래스 새로 만들어서 변경할 것
+                startActivity(intent);
+            }
+        });
+        chimpanzeeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mode="chimpanzee";
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class); // 클래스 새로 만들어서 변경할 것
                 startActivity(intent);
             }
         });
 
-        exButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ExplainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
+        }
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
@@ -62,6 +76,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onContextItemSelected(item);
     }
 
+    }
 
-
-}
