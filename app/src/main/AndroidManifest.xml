@@ -27,6 +27,10 @@
             android:name=".ExplainActivity"
             android:exported="true"
             android:screenOrientation="landscape"/>
+        <activity
+            android:name=".GameActivity"
+            android:exported="true"
+            android:screenOrientation="landscape"/>
 
     </application>
 

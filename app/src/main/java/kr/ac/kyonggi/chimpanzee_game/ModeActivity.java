@@ -15,14 +15,18 @@ public class ModeActivity extends AppCompatActivity {
 
     static String mode = "";
 
-    Button monkeyButton = (Button) findViewById(R.id.monkeyMode);
-    Button gorillaButton = (Button) findViewById(R.id.gorillaMode);
-    Button chimpanzeeButton = (Button) findViewById(R.id.chimpanzeeMode);
+    Button monkeyButton ;
+    Button gorillaButton ;
+    Button chimpanzeeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mode);
+
+        monkeyButton = (Button) findViewById(R.id.monkeyMode);
+        gorillaButton = (Button) findViewById(R.id.gorillaMode);
+        chimpanzeeButton = (Button) findViewById(R.id.chimpanzeeMode);
 
         monkeyButton.setOnClickListener(new View.OnClickListener() {
             @Override
