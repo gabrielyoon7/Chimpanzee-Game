@@ -7,12 +7,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class GameActivity extends AppCompatActivity {
 
-    BlockButton[][] monkeyButtons = new BlockButton[3][3];
-    BlockButton[][] gorillaButtons = new BlockButton[5][4];
-    BlockButton[][] chimpanzeeButtons = new BlockButton[8][5];
+    BlockButton[][] buttons = null;
 
-           @Override
-           protected void onCreate(Bundle savedInstanceState) {
-               super.onCreate(savedInstanceState);
-           }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        System.out.println(ModeActivity.mode);
+        switch (ModeActivity.mode) {
+            case "monkey":
+                buttons = new BlockButton[3][3];
+                break;
+            case "gorilla":
+                buttons = new BlockButton[5][4];
+                break;
+            case "chimpanzee":
+                buttons = new BlockButton[8][5];
+                break;
+        }
+
+    }
 }
