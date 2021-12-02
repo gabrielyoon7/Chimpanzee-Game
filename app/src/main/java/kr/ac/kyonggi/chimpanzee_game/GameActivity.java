@@ -21,6 +21,7 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
         System.out.println(ModeActivity.mode);
         switch (ModeActivity.mode) {
             case "monkey":
@@ -35,12 +36,12 @@ public class GameActivity extends AppCompatActivity {
         }
 
         table = (TableLayout) findViewById(R.id.tableLayout);
-        x = buttons.length;
-        y = buttons[0].length;
+        y = buttons.length;
+        x = buttons[0].length;
 
-        for (int i = 0; i < x; i++) {
+        for (int i = 0; i < y; i++) {
             TableRow tableRow = new TableRow(this);
-            for (int j = 0; j < y; j++) {
+            for (int j = 0; j < x; j++) {
                 buttons[i][j] = new BlockButton(this, i, j);
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
                         TableRow.LayoutParams.WRAP_CONTENT,
@@ -53,8 +54,9 @@ public class GameActivity extends AppCompatActivity {
                 buttons[i][j].y = j;
                 System.out.println(table);
                 System.out.println(tableRow);
-                table.addView(tableRow);
+
             }
+            table.addView(tableRow);
         }
     }
 }
