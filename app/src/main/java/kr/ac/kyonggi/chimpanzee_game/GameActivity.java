@@ -17,6 +17,7 @@ public class GameActivity extends AppCompatActivity {
     TableLayout table = null;
     int x;
     int y;
+    static int stage = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +29,51 @@ public class GameActivity extends AppCompatActivity {
                 buttons = new BlockButton[3][3];
                 break;
             case "gorilla":
-                buttons = new BlockButton[5][4];
+                buttons = new BlockButton[4][5];
                 break;
             case "chimpanzee":
-                buttons = new BlockButton[8][5];
+                buttons = new BlockButton[5][8];
                 break;
         }
 
         table = (TableLayout) findViewById(R.id.tableLayout);
         y = buttons.length;
         x = buttons[0].length;
+
+        createStage();
+    }
+
+    public void createStage(){
+        /**
+         * 맵 생성 시작
+         * */
+
+        int num = 1;
+        int[][] map = new int[x][y];
+
+        while (num <= x*y) {
+            int i = (int) (Math.random() * y);//시드값 필
+            int j = (int) (Math.random() * x);//시드값 필
+//            System.out.println(i+" and "+j);
+            if (map[j][i] > 0) { // 중복 시 재시도
+                continue;
+            } else {
+                map[j][i] = num; // 숫자 배정
+            }
+            num++;
+        }
+
+        /**
+         * 맵 생성 끝
+         * */
+
+        for (int i =0 ; i <y ; i++){
+            for(int j=0; j<x ; j++){
+                System.out.printf("\t"+map[j][i]);
+            }
+             System.out.println();
+        }
+
 
         for (int i = 0; i < y; i++) {
             TableRow tableRow = new TableRow(this);
@@ -52,9 +88,12 @@ public class GameActivity extends AppCompatActivity {
 
                 buttons[i][j].x = i;
                 buttons[i][j].y = j;
-                System.out.println(table);
-                System.out.println(tableRow);
 
+
+                /**
+                 * 버튼 활성화 / 비활성화 여부를 여기서 결정
+                 * */
+                
             }
             table.addView(tableRow);
         }
