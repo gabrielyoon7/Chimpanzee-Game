@@ -114,7 +114,7 @@ public class GameActivity extends AppCompatActivity {
                         boolean game = false;
                        game = ((BlockButton) view).breakBlock(view);
 
-                       if(BlockButton.blockCount>1){
+                       if(BlockButton.blockCount==1){ // hide가 안됨
                            for (int i = 0; i <y ; i++) {
                                for (int j = 0; j < x; j++) {
                                    buttons[i][j].hideNumber();
@@ -135,17 +135,17 @@ public class GameActivity extends AppCompatActivity {
                            if(stage > x*y){ // 굿엔딩
                                Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
                                startActivity(intent);
-                           } else{ // 다음 스테이지로 진행
+                           } else{
                                lifeView.setText(life+"");
                                System.out.println(stage+"/"+BlockButton.blockCount);
-                               if(stage == BlockButton.blockCount){
+                               if(stage == BlockButton.blockCount){ // 다음 스테이지로 진행시
                                    stage ++;
                                    stageView.setText(stage+"");
                                    round --;
                                    roundView.setText(round+"");
                                    createStage();
                                }
-                               else{
+                               else{ // 동일 스테이지에서 버튼 누른 후 블록 카운트 증가
                                    if(game){
                                        ((BlockButton) view).addBlockCount(); // 블록 카운트 증가
                                    }
