@@ -2,28 +2,42 @@ package kr.ac.kyonggi.chimpanzee_game;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.w3c.dom.Text;
+
 public class GameActivity extends AppCompatActivity {
 
     BlockButton[][] buttons = null;
+    int[][] map = null;
     TableLayout table = null;
     int x;
     int y;
     static int stage = 1;
+    static int life = 3;
+    TextView lifeView;
+    TextView stageView;
+    TextView roundView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        System.out.println(ModeActivity.mode);
+
+        lifeView = (TextView) findViewById(R.id.life);
+        stageView = (TextView) findViewById(R.id.stage);
+        roundView = (TextView) findViewById(R.id.round);
+        roundView.setText(x*y+"");
+
         switch (ModeActivity.mode) {
             case "monkey":
                 buttons = new BlockButton[3][3];
@@ -43,18 +57,18 @@ public class GameActivity extends AppCompatActivity {
         createStage();
     }
 
-    public void createStage(){
+    public void createMap(){
+
         /**
          * 맵 생성 시작
          * */
-
+        map = new int[x][y];
         int num = 1;
-        int[][] map = new int[x][y];
 
         while (num <= x*y) {
             int i = (int) (Math.random() * y);//시드값 필
             int j = (int) (Math.random() * x);//시드값 필
-//            System.out.println(i+" and "+j);
+
             if (map[j][i] > 0) { // 중복 시 재시도
                 continue;
             } else {
@@ -62,23 +76,19 @@ public class GameActivity extends AppCompatActivity {
             }
             num++;
         }
-
         /**
          * 맵 생성 끝
          * */
+    }
 
-        for (int i =0 ; i <y ; i++){
-            for(int j=0; j<x ; j++){
-                System.out.printf("\t"+map[j][i]);
-            }
-             System.out.println();
-        }
+    public void createStage(){
 
+        createMap();
 
-        for (int i = 0; i < y; i++) {
+        for (int i = 0; i < y; i++) { // 버튼 생성
             TableRow tableRow = new TableRow(this);
             for (int j = 0; j < x; j++) {
-                buttons[i][j] = new BlockButton(this, i, j);
+                buttons[i][j] = new BlockButton(this, i, j,map[j][i]);
                 TableRow.LayoutParams layoutParams = new TableRow.LayoutParams(
                         TableRow.LayoutParams.WRAP_CONTENT,
                         TableRow.LayoutParams.WRAP_CONTENT,
@@ -93,6 +103,40 @@ public class GameActivity extends AppCompatActivity {
                 /**
                  * 버튼 활성화 / 비활성화 여부를 여기서 결정
                  * */
+                if(buttons[i][j].blockNumber > stage){ // 버튼 비활성화
+                    buttons[i][j].setVisibility(View.INVISIBLE);
+                }
+
+                buttons[i][j].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        boolean game = false;
+                       game = ((BlockButton) view).breakBlock(view);
+
+                       if(life == 0) {
+                           if(stage > (x*y)/2 ){ // good 종료 화면
+                               Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
+                               startActivity(intent);
+                           }
+                           else { // bad 종료화면으로 이동
+                               Intent intent = new Intent(getApplicationContext(),BadEndActivity.class);
+                               startActivity(intent);
+                           }
+                       } else if(life > 0 ){
+                           if(stage == x*y){ // 굿엔딩
+                               Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
+                               startActivity(intent);
+                           } else{ // 다음 스테이지로 진행
+                               stage ++;
+                               stageView.setText(stage+"");
+                               int round = x*y - stage;
+                               roundView.setText(round+"");
+                               table.removeView(table);
+                               createStage();
+                           }
+                       }
+                    }
+                });
                 
             }
             table.addView(tableRow);

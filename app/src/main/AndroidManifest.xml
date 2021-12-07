@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChimpanzeeGame">
         <activity
+            android:name=".GoodEndActivity"
+            android:exported="true" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:screenOrientation="landscape">
@@ -22,16 +25,20 @@
         <activity
             android:name=".ModeActivity"
             android:exported="true"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".ExplainActivity"
             android:exported="true"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".GameActivity"
             android:exported="true"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
 
+        <activity
+            android:name=".BadEndActivity"
+            android:exported="true"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>

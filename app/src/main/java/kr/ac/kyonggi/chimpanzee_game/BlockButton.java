@@ -11,20 +11,24 @@ public class BlockButton extends Button {
     int y;
     int blockNumber=0;
     static int blockCount=1;
-    public BlockButton(Context context, int x, int y) {
+    public BlockButton(Context context, int x, int y, int num) {
         super(context);
         this.x=x;
         this.y=y;
+        this.blockNumber = num;
+        setText(blockNumber+"");
     }
+
     public boolean breakBlock(View view){
         if(blockNumber==blockCount){ //정답
             blockCount++;
             setText(blockNumber+"");
             setEnabled(false);
-            return true; //game continue
+            return true; // 내가 맞았는지
         }
         else{ // 오답
-            return false; //game over
+            GameActivity.life--;
+            return false; //틀린 걸 선택 했을 때
         }
     }
 }
