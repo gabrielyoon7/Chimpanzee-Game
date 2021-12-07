@@ -18,6 +18,7 @@ public class ModeActivity extends AppCompatActivity {
     Button monkeyButton ;
     Button gorillaButton ;
     Button chimpanzeeButton;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,15 @@ public class ModeActivity extends AppCompatActivity {
         gorillaButton = (Button) findViewById(R.id.gorillaMode);
         chimpanzeeButton = (Button) findViewById(R.id.chimpanzeeMode);
 
+        Intent intent = getIntent();
+        name = intent.getStringExtra("nickName");
+
         monkeyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mode="monkey";
-                Intent intent = new Intent(getApplicationContext(), GameActivity.class); // 클래스 새로 만들어서 변경할 것
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("nickName",name);// 클래스 새로 만들어서 변경할 것
                 startActivity(intent);
             }
         });
@@ -40,7 +45,8 @@ public class ModeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mode="gorilla";
-                Intent intent = new Intent(getApplicationContext(), GameActivity.class); // 클래스 새로 만들어서 변경할 것
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("nickName",name);// 클래스 새로 만들어서 변경할 것
                 startActivity(intent);
             }
         });
@@ -48,7 +54,8 @@ public class ModeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mode="chimpanzee";
-                Intent intent = new Intent(getApplicationContext(), GameActivity.class); // 클래스 새로 만들어서 변경할 것
+                Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+                intent.putExtra("nickName",name);// 클래스 새로 만들어서 변경할 것
                 startActivity(intent);
             }
         });

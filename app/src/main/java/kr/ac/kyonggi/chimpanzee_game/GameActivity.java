@@ -28,11 +28,14 @@ public class GameActivity extends AppCompatActivity {
     TextView lifeView;
     TextView stageView;
     TextView roundView;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        Intent intent = getIntent();
+        name = intent.getStringExtra("nickName");
 
         lifeView = (TextView) findViewById(R.id.life);
         stageView = (TextView) findViewById(R.id.stage);
@@ -121,23 +124,24 @@ public class GameActivity extends AppCompatActivity {
                                }
                            }
                        }
-                        System.out.println("stage"+stage);
                        if(life == 0) {
                            if(stage > (x*y)/2 ){ // good 종료 화면
                                Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
+                               intent.putExtra("nickName",name);
                                startActivity(intent);
                            }
                            else { // bad 종료화면으로 이동
                                Intent intent = new Intent(getApplicationContext(),BadEndActivity.class);
+                               intent.putExtra("nickName",name);
                                startActivity(intent);
                            }
                        } else if(life > 0 ){
                            if(stage > x*y){ // 굿엔딩
                                Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
+                               intent.putExtra("nickName",name);
                                startActivity(intent);
                            } else{
                                lifeView.setText(life+"");
-                               System.out.println(stage+"/"+BlockButton.blockCount);
                                if(stage == BlockButton.blockCount){ // 다음 스테이지로 진행시
                                    stage ++;
                                    stageView.setText(stage+"");
