@@ -24,6 +24,7 @@ public class GameActivity extends AppCompatActivity {
     int y;
     static int stage = 1;
     static int life = 3;
+    int round ;
     TextView lifeView;
     TextView stageView;
     TextView roundView;
@@ -36,8 +37,6 @@ public class GameActivity extends AppCompatActivity {
         lifeView = (TextView) findViewById(R.id.life);
         stageView = (TextView) findViewById(R.id.stage);
         roundView = (TextView) findViewById(R.id.round);
-        roundView.setText(x*y+"");
-
         switch (ModeActivity.mode) {
             case "monkey":
                 buttons = new BlockButton[3][3];
@@ -53,7 +52,8 @@ public class GameActivity extends AppCompatActivity {
         table = (TableLayout) findViewById(R.id.tableLayout);
         y = buttons.length;
         x = buttons[0].length;
-
+        roundView.setText(x*y+"");
+        round = x*y;
         createStage();
     }
 
@@ -83,8 +83,9 @@ public class GameActivity extends AppCompatActivity {
 
     public void createStage(){
 
+        table.removeAllViews();
+        BlockButton.blockCount=1;
         createMap();
-
         for (int i = 0; i < y; i++) { // 버튼 생성
             TableRow tableRow = new TableRow(this);
             for (int j = 0; j < x; j++) {
@@ -113,6 +114,14 @@ public class GameActivity extends AppCompatActivity {
                         boolean game = false;
                        game = ((BlockButton) view).breakBlock(view);
 
+                       if(BlockButton.blockCount>1){
+                           for (int i = 0; i <y ; i++) {
+                               for (int j = 0; j < x; j++) {
+                                   buttons[i][j].hideNumber();
+                               }
+                           }
+                       }
+                        System.out.println("stage"+stage);
                        if(life == 0) {
                            if(stage > (x*y)/2 ){ // good 종료 화면
                                Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
@@ -123,16 +132,24 @@ public class GameActivity extends AppCompatActivity {
                                startActivity(intent);
                            }
                        } else if(life > 0 ){
-                           if(stage == x*y){ // 굿엔딩
+                           if(stage > x*y){ // 굿엔딩
                                Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
                                startActivity(intent);
                            } else{ // 다음 스테이지로 진행
-                               stage ++;
-                               stageView.setText(stage+"");
-                               int round = x*y - stage;
-                               roundView.setText(round+"");
-                               table.removeView(table);
-                               createStage();
+                               lifeView.setText(life+"");
+                               System.out.println(stage+"/"+BlockButton.blockCount);
+                               if(stage == BlockButton.blockCount){
+                                   stage ++;
+                                   stageView.setText(stage+"");
+                                   round --;
+                                   roundView.setText(round+"");
+                                   createStage();
+                               }
+                               else{
+                                   if(game){
+                                       ((BlockButton) view).addBlockCount(); // 블록 카운트 증가
+                                   }
+                               }
                            }
                        }
                     }

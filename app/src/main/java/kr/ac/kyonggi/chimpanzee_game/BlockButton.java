@@ -19,9 +19,17 @@ public class BlockButton extends Button {
         setText(blockNumber+"");
     }
 
+    public void addBlockCount(){
+        blockCount++;
+    }
+
+    public void hideNumber(){
+        if(blockNumber > blockCount)
+            setText("");
+    }
+
     public boolean breakBlock(View view){
         if(blockNumber==blockCount){ //정답
-            blockCount++;
             setText(blockNumber+"");
             setEnabled(false);
             return true; // 내가 맞았는지
