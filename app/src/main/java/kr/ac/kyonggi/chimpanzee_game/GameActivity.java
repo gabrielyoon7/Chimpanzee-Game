@@ -136,23 +136,23 @@ public class GameActivity extends AppCompatActivity {
                                startActivity(intent);
                            }
                        } else if(life > 0 ){
-                           if(stage > x*y){ // 굿엔딩
-                               Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
-                               intent.putExtra("nickName",name);
-                               startActivity(intent);
-                           } else{
-                               lifeView.setText(life+"");
-                               if(stage == BlockButton.blockCount){ // 다음 스테이지로 진행시
+                           lifeView.setText(life+"");
+                           if( stage == BlockButton.blockCount){
+                               if(stage < x*y){ // 다음 스테이지로 진행시
                                    stage ++;
                                    stageView.setText(stage+"");
                                    round --;
                                    roundView.setText(round+"");
                                    createStage();
+                               } else if(stage == x*y){ // 결과 화면으로 이동
+                                   Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
+                                   intent.putExtra("nickName",name);
+                                   startActivity(intent);
                                }
-                               else{ // 동일 스테이지에서 버튼 누른 후 블록 카운트 증가
-                                   if(game){
-                                       ((BlockButton) view).addBlockCount(); // 블록 카운트 증가
-                                   }
+                           }
+                           else{ // 동일 스테이지에서 버튼 누른 후 블록 카운트 증가
+                               if(game){
+                                   ((BlockButton) view).addBlockCount(); // 블록 카운트 증가
                                }
                            }
                        }
