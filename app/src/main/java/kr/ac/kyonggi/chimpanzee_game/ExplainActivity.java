@@ -29,7 +29,9 @@ public class ExplainActivity extends AppCompatActivity {
                 startActivity(intent1);
                 return true;
             case R.id.toEnd:
-
+                finishAffinity();
+                System.runFinalization();
+                System.exit(0);
                 return true;
             case R.id.toStart:
                 Intent intent3 = new Intent(getApplicationContext(), ModeActivity.class);
