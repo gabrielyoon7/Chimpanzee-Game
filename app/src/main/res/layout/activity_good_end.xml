@@ -5,6 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/goToMain2"
+        android:layout_width="133dp"
+        android:layout_height="69dp"
+        android:text="메인화면으로 돌아가기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/replay2"
+        android:layout_width="133dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="32dp"
+        android:text="한번 더 도전"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goToMain2"
+        app:layout_constraintVertical_bias="0.126" />
+
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="377dp"

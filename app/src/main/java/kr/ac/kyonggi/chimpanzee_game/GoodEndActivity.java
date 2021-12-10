@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class GoodEndActivity extends AppCompatActivity {
@@ -22,6 +24,23 @@ public class GoodEndActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String nickName = intent.getStringExtra("nickName");
         name.setText(nickName);
+
+        Button backButton = (Button) findViewById(R.id.goToMain2);
+        Button replayButton = (Button) findViewById(R.id.replay2);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        replayButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
     @Override
