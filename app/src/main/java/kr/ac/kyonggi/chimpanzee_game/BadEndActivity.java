@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class BadEndActivity extends AppCompatActivity {
 
+
     TextView name ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,6 @@ public class BadEndActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
@@ -37,7 +37,7 @@ public class BadEndActivity extends AppCompatActivity {
         replayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ModeActivity.class);
                 startActivity(intent);
             }
         });
