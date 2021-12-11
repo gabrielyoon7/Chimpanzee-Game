@@ -14,16 +14,21 @@ import android.widget.TextView;
 public class GoodEndActivity extends AppCompatActivity {
 
     TextView name ;
-
+    TextView score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_good_end);
 
         name = (TextView) findViewById(R.id.name);
+        score = (TextView) findViewById(R.id.goodScore);
+
         Intent intent = getIntent();
         String nickName = intent.getStringExtra("nickName");
-        name.setText(nickName);
+        int gotScore =  intent.getIntExtra("stage",1);
+        int total = intent.getIntExtra("total",1);
+        name.setText(nickName+" 님");
+        score.setText(total+" stage 중 "+gotScore+" stage Clear!");
 
         Button backButton = (Button) findViewById(R.id.goToMain2);
         Button replayButton = (Button) findViewById(R.id.replay2);

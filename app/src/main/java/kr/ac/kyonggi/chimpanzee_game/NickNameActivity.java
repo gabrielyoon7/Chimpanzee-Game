@@ -2,6 +2,8 @@ package kr.ac.kyonggi.chimpanzee_game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class NickNameActivity extends AppCompatActivity {
 
@@ -28,10 +31,25 @@ public class NickNameActivity extends AppCompatActivity {
         nickNameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ModeActivity.class);
                 name = nickName.getText().toString();
-                intent.putExtra("nickName",name);
-                startActivity(intent);
+
+                if(name.length()==0){
+
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(NickNameActivity.this);
+                    dlg.setMessage("닉네임을 입력해 주세요"); // 메시지
+                    dlg.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            //토스트 메시지
+                            Toast.makeText(NickNameActivity.this, "확인을 누르셨습니다.", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    dlg.show();
+
+                }else{
+                    Intent intent = new Intent(getApplicationContext(), ModeActivity.class);
+                    intent.putExtra("nickName",name);
+                    startActivity(intent);
+                }
             }
         });
     }

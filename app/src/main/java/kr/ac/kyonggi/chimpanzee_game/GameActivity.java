@@ -130,11 +130,15 @@ public class GameActivity extends AppCompatActivity {
                        if(life == 0) {
                            if(stage > (x*y)/2 ){ // good 종료 화면
                                Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
+                               intent.putExtra("stage",stage);
+                               intent.putExtra("total",(x*y));
                                intent.putExtra("nickName",name);
                                startActivity(intent);
                            }
                            else { // bad 종료화면으로 이동
                                Intent intent = new Intent(getApplicationContext(),BadEndActivity.class);
+                               intent.putExtra("stage",stage);
+                               intent.putExtra("total",(x*y));
                                intent.putExtra("nickName",name);
                                startActivity(intent);
                            }
@@ -149,6 +153,8 @@ public class GameActivity extends AppCompatActivity {
                                    createStage();
                                } else if(stage == x*y){ // 결과 화면으로 이동
                                    Intent intent = new Intent(getApplicationContext(),GoodEndActivity.class);
+                                   intent.putExtra("stage",stage);
+                                   intent.putExtra("total",(x*y));
                                    intent.putExtra("nickName",name);
                                    startActivity(intent);
                                }

@@ -15,15 +15,21 @@ public class BadEndActivity extends AppCompatActivity {
 
 
     TextView name ;
+    TextView score;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bad_end);
 
         name = (TextView) findViewById(R.id.name2);
+        score = (TextView) findViewById(R.id.badScore);
+
         Intent intent = getIntent();
         String nickName = intent.getStringExtra("nickName");
-        name.setText(nickName);
+        int gotScore =  intent.getIntExtra("stage",1);
+        int total = intent.getIntExtra("total",1);
+        name.setText(nickName+" 님");
+        score.setText(total+" stage 중 "+gotScore+" stage Clear!");
 
         Button backButton = (Button) findViewById(R.id.goToMain);
         Button replayButton = (Button) findViewById(R.id.replay);
