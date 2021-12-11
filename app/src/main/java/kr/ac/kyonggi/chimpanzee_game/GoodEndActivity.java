@@ -34,20 +34,11 @@ public class GoodEndActivity extends AppCompatActivity {
         score.setText(total+" stage 중 "+gotScore+" stage Clear!");
 
         Button backButton = (Button) findViewById(R.id.goToMain2);
-        Button replayButton = (Button) findViewById(R.id.replay2);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 restart(getApplicationContext());
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-            }
-        });
-        replayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                restart(getApplicationContext());
-                Intent intent = new Intent(getApplicationContext(), ModeActivity.class);
                 startActivity(intent);
             }
         });
