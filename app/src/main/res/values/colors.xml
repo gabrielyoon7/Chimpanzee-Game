@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pier">#45451F</color>
+    <color name="tropic">#007F52</color>
+    <color name="moss_green">#859F3C</color>
 </resources>
