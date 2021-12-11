@@ -1,8 +1,11 @@
 package kr.ac.kyonggi.chimpanzee_game;
 
 import android.app.AlertDialog;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -182,6 +185,7 @@ public class GameActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.toMain:
+                restart(getApplicationContext());
                 Intent intent1 = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent1);
                 return true;
@@ -190,13 +194,16 @@ public class GameActivity extends AppCompatActivity {
                 System.runFinalization();
                 System.exit(0);
                 return true;
-            case R.id.toStart:
-                Intent intent3 = new Intent(getApplicationContext(), ModeActivity.class);
-                startActivity(intent3);
-                return true;
-
 
         }
         return super.onContextItemSelected(item);
+    }
+    private void restart(Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
+        ComponentName componentName = intent.getComponent();
+        Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+        context.startActivity(mainIntent);
+        Runtime.getRuntime().exit(0);
     }
 }

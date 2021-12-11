@@ -56,6 +56,7 @@ public class BadEndActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.toMain:
+                restart(getApplicationContext());
                 Intent intent1 = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent1);
                 return true;
@@ -64,11 +65,6 @@ public class BadEndActivity extends AppCompatActivity {
                 System.runFinalization();
                 System.exit(0);
                 return true;
-            case R.id.toStart:
-                Intent intent3 = new Intent(getApplicationContext(), ModeActivity.class);
-                startActivity(intent3);
-                return true;
-
 
         }
         return super.onContextItemSelected(item);
