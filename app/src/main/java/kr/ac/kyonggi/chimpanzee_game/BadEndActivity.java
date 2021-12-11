@@ -1,6 +1,9 @@
 package kr.ac.kyonggi.chimpanzee_game;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -36,6 +39,7 @@ public class BadEndActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                restart(getApplicationContext());
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
@@ -43,6 +47,7 @@ public class BadEndActivity extends AppCompatActivity {
         replayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                restart(getApplicationContext());
                 Intent intent = new Intent(getApplicationContext(), ModeActivity.class);
                 startActivity(intent);
             }
@@ -76,5 +81,14 @@ public class BadEndActivity extends AppCompatActivity {
 
         }
         return super.onContextItemSelected(item);
+    }
+
+    private void restart(Context context) {
+        PackageManager packageManager = context.getPackageManager();
+        Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
+        ComponentName componentName = intent.getComponent();
+        Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+        context.startActivity(mainIntent);
+        Runtime.getRuntime().exit(0);
     }
 }
