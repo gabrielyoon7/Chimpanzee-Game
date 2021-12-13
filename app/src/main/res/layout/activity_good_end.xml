@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="40dp"
         android:fontFamily="sans-serif-black"
         android:text="당신은 인간이 맞군요!"
         android:textColor="@color/black"
@@ -48,14 +48,14 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="17dp"
         android:fontFamily="sans-serif-black"
         android:text="name"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView10"
         app:layout_constraintEnd_toStartOf="@+id/textView10"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/imageView3" />
 
     <TextView
