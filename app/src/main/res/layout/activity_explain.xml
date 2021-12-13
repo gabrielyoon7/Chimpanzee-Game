@@ -3,14 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFF9CD">
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="172dp"
         android:layout_height="37dp"
+        android:fontFamily="sans-serif-black"
         android:text="침팬지 게임이란?"
         android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/textView4"
@@ -25,7 +28,8 @@
         android:layout_width="419dp"
         android:layout_height="176dp"
         android:fontFamily="sans-serif-black"
-        android:text="이것은 작업 기억력에 대한 실험으로, 침팬지가 이 과제에서 지속적으로 인간을 능가한다는 연구로 유명해졌습니다. 이 연구에서, 그 침팬지들은 지속적으로 인간을 능가했고, 어떤 침팬지들은 90퍼센트 동안 9개의 숫자를 기억할 수 있었습니다.  이 테스트는 그 개념의 변형으로, 매 회마다 점점 더 어려워집니다. 레벨을 통과하면 숫자가 증가합니다. 실패하면 스트라이크당합니다. 삼진 아웃이면 게임은 끝이납니다."
+        android:text="작업 기억력에 대한 실험으로, 침팬지가 이 과제에서 지속적으로 인간을 능가한다는 연구로 유명해졌습니다. 이 연구에서, 그 침팬지들은 지속적으로 인간을 능가했고, 어떤 침팬지들은 90퍼센트 동안 9개의 숫자를 기억할 수 있었습니다.  이 테스트는 그 개념의 변형으로, 매 회마다 점점 더 어려워집니다. 레벨을 통과하면 숫자가 증가합니다. 실패하면 스트라이크당합니다. 삼진 아웃이면 게임은 끝이납니다."
+        android:textColor="@color/black"
         android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,13 +43,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="번호를 기억해두었다가 순서대로 클릭해주세요! 1을 클릭할시 모든 번호가 사라집니다."
+        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.11" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -63,11 +68,24 @@
         android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_blue_light"
         android:fontFamily="sans-serif-black"
         android:text="돌아가기"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="아이콘 제작자: https://www.freepik.com//Freepik"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.897"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

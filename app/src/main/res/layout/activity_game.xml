@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFF9CD">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,7 +22,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
                 android:layout_marginTop="24dp"
+                android:fontFamily="sans-serif-black"
                 android:text="당신이 인간이되기까지"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
             <TextView
@@ -30,8 +33,10 @@
                 android:layout_height="27dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
+                android:fontFamily="sans-serif-black"
                 android:text="n"
                 android:textAlignment="textEnd"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
             <TextView
@@ -40,7 +45,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="52dp"
+                android:fontFamily="sans-serif-medium"
                 android:text="판 남았습니다!"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
             <TextView
@@ -49,7 +56,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="20dp"
+                android:fontFamily="sans-serif-black"
                 android:text="Life"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
             <TextView
@@ -58,7 +67,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="52dp"
+                android:fontFamily="sans-serif-black"
                 android:text="3"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
             <TextView
@@ -67,7 +78,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="30dp"
+                android:fontFamily="sans-serif-black"
                 android:text="Stage"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
             <TextView
@@ -76,7 +89,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="32dp"
+                android:fontFamily="sans-serif-black"
                 android:text="1"
+                android:textColor="@color/black"
                 android:textSize="17sp" />
 
         </LinearLayout>
