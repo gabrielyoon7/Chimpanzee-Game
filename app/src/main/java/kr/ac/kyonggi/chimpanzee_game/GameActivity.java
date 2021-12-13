@@ -91,7 +91,16 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void createStage(){
-
+        if(stage==1) {
+            new AlertDialog.Builder(this)
+                    .setTitle("게임방법")
+                    .setMessage("번호를 기억해두었다가 순서대로 클릭해주세요!\n1을 클릭할시 모든 번호가 사라집니다.")
+                    .setNeutralButton("닫기", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dlg, int sumthin) {
+                        }
+                    })
+                    .show(); // 팝업창 보여줌
+        }
         table.removeAllViews();
         BlockButton.blockCount=1;
         createMap();
